@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    protected $table = 'Brands';
+    protected $table = 'brands';
 
     // こちらが上位
     public function projects()

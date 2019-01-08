@@ -14,7 +14,7 @@ class CreateTempImages extends Migration
     public function up()
     {
         Schema::create('temp_images', function (Blueprint $table) {
-            $table->mediumInteger('id');
+            $table->mediumIncrements('id');
             $table->string('path', 255);
             $table->boolean('is_register')->default(false);
             $table->timestamps();
