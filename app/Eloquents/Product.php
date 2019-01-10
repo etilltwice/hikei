@@ -17,6 +17,6 @@ class Product extends Model
     // こちらが下位
     public function projects()
     {
-        return $this->belongsTo('App\Eloquents\Project', 'id', 'product_id');
+        return $this->belongsTo('App\Eloquents\Project', 'product_id', 'id');
     }
 }

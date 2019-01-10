@@ -11,38 +11,44 @@ class ProductFeedController extends Controller
     public function __invoke(Request $request)
     {
         if ($request->has('next_id')) {
-        // if ($_GET('next_id') != '') {
-            $next_id = $_GET('next_id');
-            $feed = Product::with(['ProductImage', 'Project', 'Project->Brand'])
-                ->orderby('updated_at', 'desc')->skip(next_id)->take(10)
-                // ->select(
-                //     'Project->id             as project_id',
-                //     'Project->name           as project_name',
-                //     'Project->Brand->id      as brand_id',
-                //     'Project->Brand->name    as brand_name',
-                //     'Project->Brand->caption as brand_logo',
-                //     'name                    as product_name',
-                //     'proce                   as product_price',
-                //     'caption                 as product_caption',
-                //     'ProductImage->path      as product_image_path'
-                // )
+            $next_id = $Request->next_id;
+            $feed = \DB::table('product_images')
+                ->join('products', 'product_images.product_id', '=', 'products.id')
+                ->join('projects', 'products.id', '=', 'projects.product_id')
+                ->join('brands', 'brands.id', '=', 'projects.brand_id')
+                ->orderby('product_images.updated_at', 'desc')
+                ->skip($next_id)
+                ->take(10)
+                ->select(
+                    'projects.id         as project_id',
+                    'projects.name       as project_name',
+                    'brands.id           as brand_id',
+                    'brands.brand_name   as brand_name',
+                    'brands.logo_path    as brand_logo',
+                    'products.name       as product_name',
+                    'products.price      as product_price',
+                    'products.caption    as product_caption',
+                    'product_images.path as product_image_path'
+                )
                 ->get();
         } else {
-            $feed = Product::with([
-                'productimages', 'projects', 'projects.brands'
-            ])
-                ->orderby('updated_at', 'desc')->take(10)
-                // ->select(
-                //     'Project->id             as project_id',
-                //     'Project->name           as project_name',
-                //     'Project->Brand->id      as brand_id',
-                //     'Project->Brand->name    as brand_name',
-                //     'Project->Brand->caption as brand_logo',
-                //     'name                    as product_name',
-                //     'proce                   as product_price',
-                //     'caption                 as product_caption',
-                //     'ProductImage->path      as product_image_path'
-                // )
+            $feed = \DB::table('product_images')
+                ->join('products', 'product_images.product_id', '=', 'products.id')
+                ->join('projects', 'products.id', '=', 'projects.product_id')
+                ->join('brands', 'brands.id', '=', 'projects.brand_id')
+                ->orderby('product_images.updated_at', 'desc')
+                ->take(10)
+                ->select(
+                    'projects.id         as project_id',
+                    'projects.name       as project_name',
+                    'brands.id           as brand_id',
+                    'brands.brand_name   as brand_name',
+                    'brands.logo_path    as brand_logo',
+                    'products.name       as product_name',
+                    'products.price      as product_price',
+                    'products.caption    as product_caption',
+                    'product_images.path as product_image_path'
+                )
                 ->get();
         }
         return response()->json($feed);

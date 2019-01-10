@@ -39,7 +39,7 @@ class ProjectFeedController extends Controller
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('project_images.updated_at', 'desc')
-                ->take(1)
+                ->take(10)
                 ->select(
                     'projects.id            as project_id',
                     'projects.name          as project_name',

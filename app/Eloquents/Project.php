@@ -16,7 +16,7 @@ class Project extends Model
 
     public function products()
     {
-        return $this->has('App\Eloquents\Product', 'id', 'product_id');
+        return $this->has('App\Eloquents\Product', 'product_id', 'id');
     }
 
     //こちらが下位

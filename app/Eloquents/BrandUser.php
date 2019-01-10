@@ -11,6 +11,6 @@ class BrandUser extends Model
     // こちらが下位
     public function brands()
     {
-        $this->BelongsToMany('App\Eloquents\Brand', 'brand_id', 'id');
+        $this->BelongsTo('App\Eloquents\Brand', 'brand_id', 'id');
     }
 }
