@@ -16,6 +16,5 @@ class BrandPageController extends Controller
             ->first();
 
         return new \App\Http\Resources\BrandPage($feeds);
-
     }
 }

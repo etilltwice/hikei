@@ -16,17 +16,11 @@ class BrandController extends Controller
      */
     public function read(Request $request)
     {
-        $brand_id = $_GET('brand_id');
-        $data = Brand::where('id', $brand_id)
-            ->select(
-                'account_id',
-                'name         as brand_name',
-                'website_url  as brand_url',
-                'caption      as brand_caption',
-                'phone_number as brand_telephone',
-                'logo_path    as brand_logo'
-            )->first();
-        return response()->json($data);
+        $brand_id = $request->brand_id;
+        $feeds = Brand::where('id', $brand_id)
+            ->first();
+        return new \App\Http\Resources\Brands($feeds);
+        // return response()->json($feeds);
     }
 
     public function update(Request $request)
