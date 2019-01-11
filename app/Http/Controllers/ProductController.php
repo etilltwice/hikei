@@ -17,7 +17,7 @@ class ProductController extends Controller
             ->where('products.id', $product_id)
             ->get();
 
-        return new \App\Http\resources\ProductGet($feeds);
+        return new \App\Http\Resources\ProductGet($feeds);
         // return response()->json($feeds);
     }
 
