@@ -25,15 +25,14 @@ class BrandController extends Controller
 
     public function update(Request $request)
     {
-        $brand_id = $_GET('brand_id');
-        Brand::where('id', $brand_id)
+        Brand::where('id', $request->brand_id)
             ->update([
-                'account_id' => $request['account_id'],
-                'brand_name' => $request['brand_name'],
-                'website_url' => $request['brand_url'],
-                'caption' => $request['brand_caption'],
-                'phone_number' => $request['brand_telephone'],
-                'logo_path' => $request['brand_logo']
+                'account_id' => $request->account_id,
+                'brand_name' => $request->brand_name,
+                'website_url' => $request->brand_url,
+                'caption' => $request->brand_caption,
+                'phone_number' => $request->brand_telephone,
+                'logo_path' => $request->brand_logo
             ]);
     }
 }

@@ -16,10 +16,12 @@ class HogeControler extends Controller
      */
     public function __invoke(Request $request)
     {
-        $backdatas = Project::orderBy('updated_at', 'desc')
-            ->take(10)
-            ->select('id', 'name', 'caption')
-            ->get();
-        return response()->json($backdatas);
+        if ($request->has('name')) {
+            return 'yes';
+        } else {
+            return $request->name;
+        }
+
+        // dd($answer);
     }
 }

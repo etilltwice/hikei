@@ -16,13 +16,14 @@ class ProjectFeedController extends Controller
      */
     public function __invoke(Request $request)
     {
-        if ($request->has('next_id')) {
+        if ($request->filled('next_id')) {
             $next_id = $request->next_id;
             $feed = \DB::table('project_images')
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('project_images.updated_at', 'desc')
-                ->take(10)
+                ->skip($next_id)
+                ->take(1)
                 ->select(
                     'projects.id            as project_id',
                     'projects.name          as project_name',
