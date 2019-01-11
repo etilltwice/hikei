@@ -27,8 +27,8 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define(App\Eloquents\ProjectImage::class, function (Faker $faker) {
     return [
         'project_id' => $faker->numberBetween($min = 1, $max = 10),
-        // 'path' => $faker->file($sourceDir = 'c:/dev/tmp', $targetDir = 'c:/dev/tmp2'),
-        'path' => $faker->file($sourceDir = '/var/www/tmp', $targetDir = '/var/www/tmp2'),
+        'path' => $faker->file($sourceDir = 'c:/dev/tmp', $targetDir = 'c:/dev/tmp2'),
+        // 'path' => $faker->file($sourceDir = '/var/www/tmp', $targetDir = '/var/www/tmp2'),
         'caption' => $faker->text($maxNbChars = 220),
     ];
 });
@@ -80,15 +80,15 @@ $factory->define(App\Eloquents\Product::class, function (Faker $faker) {
 $factory->define(App\Eloquents\ProductImage::class, function (Faker $faker) {
     return [
         'product_id' => $faker->numberBetween($min = 1, $max = 10),
-        // 'path' => $faker->file($sourceDir = 'c:/dev/tmp', $targetDir = 'c:/dev/tmp3'),
-        'path' => $faker->file($sourceDir = '/var/www/tmp', $targetDir = '/var/www/tmp3'),
+        'path' => $faker->file($sourceDir = 'c:/dev/tmp', $targetDir = 'c:/dev/tmp3'),
+        // 'path' => $faker->file($sourceDir = '/var/www/tmp', $targetDir = '/var/www/tmp3'),
     ];
 });
 
 // temp_images用のファクトリー
 $factory->define(App\Eloquents\TempImage::class, function (Faker $faker) {
     return [
-        // 'path' => $faker->file($sourceDir = 'c:/dev/tmp', $targetDir = 'c:/dev/temp4'),
-        'path' => $faker->file($sourceDir = '/var/www/tmp', $targetDir = '/var/www/temp4'),
+        'path' => $faker->file($sourceDir = 'c:/dev/tmp', $targetDir = 'c:/dev/temp4'),
+        // 'path' => $faker->file($sourceDir = '/var/www/tmp', $targetDir = '/var/www/temp4'),
     ];
 });

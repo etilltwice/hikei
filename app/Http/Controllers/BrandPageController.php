@@ -11,10 +11,11 @@ class BrandPageController extends Controller
     public function __invoke(Request $request)
     {
         $brand_id = $request->brand_id;
-        $data = Brand::with(['projects', 'projects.projectimages', 'projects.products'])
-            ->where('id', $brand_id)
+        $feeds = Brand::with(['projects', 'projects.projectimages', 'projects.products'])
+            ->where('brands.id', $brand_id)
             ->first();
 
-        return response()->json($data);
+        return new \App\Http\Resources\BrandPage($feeds);
+
     }
 }
