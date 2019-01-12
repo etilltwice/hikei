@@ -34,7 +34,10 @@ Route::get('/brand/{brand_id}', 'BrandController@read');
 Route::post('/brand/{brand_id}', 'BrandController@update');
 
 // プロジェクト情報取得　O
-Route::get('/project_view/{project_id}', 'ProjectController@read');
+Route::get('/project_view/{project_id}', 'ProjectViewController');
+
+//　プロジェクト関連
+Route::get('/project/{project_id}', 'ProjectController@read');
 
 // プロダクト情報取得 O
 Route::get('/product_get/{product_id}', 'ProductController@read');

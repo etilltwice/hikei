@@ -15,13 +15,13 @@ class DemoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('brands')->delete();
+        DB::table('brands')->truncate();
         $brand = new Brand;
         $brand->brand_name = 'patagonia';
         $brand->logo_path = 'https://cdn-ak.f.st-hatena.com/images/fotolife/S/SikisimaHisayuki/20170905/20170905123623.jpg';
         $brand->save();
 
-        DB::table('projects')->delete();
+        DB::table('projects')->truncate();
         Db::table('projects')->insert([
             [
                 'name' => '環境と人にやさしいデニムをつくる',
@@ -37,7 +37,7 @@ class DemoSeeder extends Seeder
             ]
         ]);
 
-        DB::table('project_images')->delete();
+        DB::table('project_images')->truncate();
         DB::table('project_images')->insert([
             [
                 'path' => 'https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024703/150730_ptgn_001.jpg',

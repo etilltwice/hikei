@@ -17,17 +17,7 @@ class ProjectsGet extends JsonResource
         return [
             'project_name' => $this->name,
             'project_caption' => $this->caption,
-            'brand_id' => $this->brands->id,
-            'brand_logo' => $this->brands->logo_path,
-            'product_id' => $this->products->id,
-            'product_name' => $this->products->name,
-            'product_price' => $this->products->price,
-            'product_size' => $this->products->size,
-            'product_caption' => $this->products->caption,
-            'product_way' => $this->products->way,
-            'product_image_path' => $this->products->productimages[0]->path,
-            'product_image_caption' => $this->products->productimages[0]->caption,
-            'project_images' => ProjectImage::collection($this->projectimages)
+            'project_name' => ProjectImage::collection($this->projectImages)
         ];
     }
 }
