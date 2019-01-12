@@ -8,10 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class ProductFeedController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, $next_id)
     {
-        if ($request->has('next_id')) {
-            $next_id = $Request->next_id;
+        if (isset($next_id)) {
             $feed = \DB::table('product_images')
                 ->join('products', 'product_images.product_id', '=', 'products.id')
                 ->join('projects', 'products.id', '=', 'projects.product_id')

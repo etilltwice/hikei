@@ -14,16 +14,15 @@ class ProjectFeedController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, $next_id)
     {
-        if ($request->filled('next_id')) {
-            $next_id = $request->next_id;
+        if (isset($next_id)) {
             $feed = \DB::table('project_images')
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('project_images.updated_at', 'desc')
                 ->skip($next_id)
-                ->take(1)
+                ->take(10)
                 ->select(
                     'projects.id            as project_id',
                     'projects.name          as project_name',
@@ -40,7 +39,7 @@ class ProjectFeedController extends Controller
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('project_images.updated_at', 'desc')
-                ->take(10)
+                ->take(1)
                 ->select(
                     'projects.id            as project_id',
                     'projects.name          as project_name',

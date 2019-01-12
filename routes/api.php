@@ -17,11 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// projectfeed X (has問題)
+// projectfeed O
 Route::get('/project_feeds/{next_id?}', 'ProjectFeedController');
 
 // ここ以下はテスト前
-// productfeed X
+// productfeed O
 Route::get('/product_feeds/{next_id?}', 'ProductFeedController');
 
 // ブランドページ O
