@@ -14,7 +14,7 @@ class ProjectFeedController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, $next_id)
+    public function __invoke(Request $request, $next_id = '')
     {
         if (isset($next_id)) {
             $feed = \DB::table('project_images')

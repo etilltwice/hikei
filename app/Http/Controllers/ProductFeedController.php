@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductFeedController extends Controller
 {
-    public function __invoke(Request $request, $next_id)
+    public function __invoke(Request $request, $next_id = '')
     {
         if (isset($next_id)) {
             $feed = \DB::table('product_images')
