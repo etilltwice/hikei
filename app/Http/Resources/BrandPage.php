@@ -23,8 +23,13 @@ class BrandPage extends JsonResource
             'projectimages' => \DB::table('project_images')
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
-                ->where('brands.id', $this->id)
+                // ->where('brands.id', $this->id)
                 ->orderby('project_images.updated_at', 'desc')
+                ->select(
+                    'project_images.path as project_image_path',
+                    'projects.id         as project_id        ',
+                    'projects.name       as project_name      '
+                )
                 ->get(),
         ];
     }
