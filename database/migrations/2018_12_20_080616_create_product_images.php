@@ -17,6 +17,7 @@ class CreateProductImages extends Migration
             $table->smallIncrements('id');
             $table->mediumInteger('product_id')->unsigned();
             $table->string('path', 255);
+            $table->string('caption', 220)->nullable();
             $table->timestamps();
         });
     }

@@ -82,6 +82,7 @@ $factory->define(App\Eloquents\ProductImage::class, function (Faker $faker) {
         'product_id' => $faker->numberBetween($min = 1, $max = 10),
         // 'path' => $faker->file($sourceDir = 'c:/dev/tmp', $targetDir = 'c:/dev/tmp3'),
         'path' => $faker->file($sourceDir = '/var/www/tmp', $targetDir = '/var/www/tmp3'),
+        'caption' => $faker->text($maxNbChars = 100),
     ];
 });
 

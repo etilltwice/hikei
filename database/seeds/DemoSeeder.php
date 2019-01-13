@@ -127,5 +127,27 @@ class DemoSeeder extends Seeder
                 'caption' => '私たちの多様な旅の遍歴を反映しながらハワイの伝統を讃えるシャツ。レラ・サンがイヴォン・シュイナードに付けたあだ名「オピヒ・マン」にちなんだプリントを採用。ビンテージ感を演出するドビー織りの風通しのよいソフトなヘンプ60％／リサイクル・ポリエステル35％／テンセル・リヨセル５％混紡素材を使用'
             ]
         ]);
+
+        // productimagetable作成
+        DB::table('product_images')->truncate();
+        DB::table('product_images')->insert([
+            [
+                'product_id' => 1,
+                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw2440aa94/images/hi-res/56195_DDNM.jpg?sw=2000&sh=2000&sm=fit&sfrm=png',
+                'caption' => '正面'
+            ], [
+                'product_id' => 2,
+                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw105aae87/images/hi-res/52550_OPIC.jpg?sw=750&sh=750&sm=fit&sfrm=png',
+                'caption' => '正面'
+            ], [
+                'product_id' => 3,
+                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw2440aa94/images/hi-res/56195_DDNM.jpg?sw=2000&sh=2000&sm=fit&sfrm=png',
+                'caption' => '正面'
+            ], [
+                'product_id' => 4,
+                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw105aae87/images/hi-res/52550_OPIC.jpg?sw=750&sh=750&sm=fit&sfrm=png',
+                'caption' => '正面'
+            ]
+        ]);
     }
 }
