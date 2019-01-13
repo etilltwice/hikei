@@ -8,11 +8,9 @@
 </head>
 <body>
     <table>
-        <form action='' medhod='POST'>
+        <form action='/api/temp_image' medhod='POST' enctype="multipart/form-data">
             {{csrf_field()}}
-            <tr><td></td><td></td></tr>
-            <tr><td></td><td></td></tr>
-            <tr><td></td><td></td></tr>
+            <tr><td>json</td>  <td><input type="text" name='json'></td></tr>
             <tr><td></td><td><input type="submit" value="GO"></td></tr>
         </form>
     </table>

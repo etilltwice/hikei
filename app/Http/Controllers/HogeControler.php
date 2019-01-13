@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Eloquents\Project;
+use App\Eloquents\Product;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 
 class HogeControler extends Controller
@@ -14,14 +15,21 @@ class HogeControler extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function input(Request $request)
     {
-        if ($request->has('name')) {
-            return 'yes';
-        } else {
-            return $request->name;
-        }
+        $product_id = $request->product_id;
+        $feeds = Product::with('projects', 'productimages', 'projects.projectimages')
+            ->where('products.id', $product_id)
+            ->get();
 
-        // dd($answer);
+        $data = new \App\Http\Resources\ProductGet($feeds);
+        $kotoba = 'kotoba';
+        // return response()->header('Content-Type', 'application/json');
+        return redirect()->action('HogeControler@output', ['data' => $data]);
+    }
+
+    public function output(Request $request)
+    {
+        return response()->json($request);
     }
 }

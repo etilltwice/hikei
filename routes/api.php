@@ -22,7 +22,7 @@ Route::get('/project_feeds/{next_id?}', 'ProjectFeedController');
 
 // ここ以下はテスト前
 // productfeed O
-Route::get('/product_feeds/{next_id?}', 'ProductFeedController');
+Route::get('/product_feeds/{next_id?}', 'ProductFeedController')->name('hoge');
 
 // ブランドページ O
 Route::get('/brand_page/{brand_id}', 'BrandPageController');
@@ -43,7 +43,11 @@ Route::get('/project/{project_id}', 'ProjectController@read');
 Route::get('/product_get/{product_id}', 'ProductController@read');
 
 // プロダクト情報作成
-Route::post('/product', 'ProductController@post');
+Route::post('/product', 'ProductController@create');
+
+// 仮イメージテーブル
+Route::post('/temp_image', 'TempImageController');
 
 // 色々のテスト用
-Route::get('/hoge/{name?}', 'HogeControler');
+Route::get('/hoge/{product_id}', 'HogeControler@input');
+Route::get('/hogehoge', 'HogeControler@output');

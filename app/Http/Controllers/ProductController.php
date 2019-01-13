@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Eloquents\Product;
 use App\Eloquents\ProductImage;
 use App\Eloquents\ProjectImage;
+use Application\json;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,8 +23,12 @@ class ProductController extends Controller
         // return response()->json($feeds);
     }
 
-    public function update()
+    public function create(Request $request)
     {
+        return $request;
+        // $product->$request->input('product.id');
+        // dd($product);
+
 
     }
 }
