@@ -6,6 +6,7 @@ use App\Eloquents\Product;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
+use Test\Test
 
 class HogeControler extends Controller
 {
@@ -22,10 +23,11 @@ class HogeControler extends Controller
             ->where('products.id', $product_id)
             ->get();
 
-        $data = new \App\Http\Resources\ProductGet($feeds);
-        $kotoba = 'kotoba';
+        $response = $this->json('POST', new \App\Http\Resources\ProductGet($feeds));
+        $response->
+        // $kotoba = 'kotoba';
         // return response()->header('Content-Type', 'application/json');
-        return redirect()->action('HogeControler@output', ['data' => $data]);
+        // return redirect()->action('HogeControler@output', ['data' => $data]);
     }
 
     public function output(Request $request)

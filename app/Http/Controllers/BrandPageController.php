@@ -11,7 +11,7 @@ class BrandPageController extends Controller
     public function __invoke(Request $request)
     {
         $brand_id = $request->brand_id;
-        $feeds = Brand::with(['projects', 'projects.projectimages', 'projects.products'])
+        $feeds = Brand::with(['projects', 'projects.products'])
             ->where('brands.id', $brand_id)
             ->first();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Eloquents\ProjectImage;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Projects extends JsonResource
@@ -17,7 +18,7 @@ class Projects extends JsonResource
         return [
             'project_id' => $this->id,
             'project_name' => $this->name,
-            'project_image_path' => $this->projectimages[0]->path
+            'project_image_path' => ProjectImage::where('project_id', $this->id)->first(),
         ];
     }
 }
