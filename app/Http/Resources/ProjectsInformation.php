@@ -22,6 +22,7 @@ class ProjectsInformation extends JsonResource
             'product_id' => $this->products->id,
             'product_name' => $this->products->name,
             'product_price' => $this->products->price,
+            'product_cost' => $this->products->cost,
             'product_size' => $this->products->size,
             'product_caption' => $this->products->caption,
             'product_way' => $this->products->way,
