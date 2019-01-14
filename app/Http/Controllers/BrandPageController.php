@@ -38,7 +38,7 @@ class BrandPageController extends Controller
         $projectimages = ['projectimages' => $child];
 
         // データの加工
-        $feeds = $data->push($projectimages);
+        $feeds = $data->push($child);
 
         // dump(new \App\Http\Resources\BrandPage($feeds));
         return new \App\Http\Resources\BrandPage($feeds);
