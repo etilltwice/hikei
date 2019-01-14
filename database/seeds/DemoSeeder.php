@@ -20,7 +20,7 @@ class DemoSeeder extends Seeder
         DB::table('brands')->truncate();
         $brand = new Brand;
         $brand->account_id = 'patagonia';
-        $brand->brand_name = 'patagonia';
+        $brand->brand_name = 'patagonia.inc';
         $brand->website_url = 'https://patagonia.com';
         $brand->caption = '最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。';
         $brand->logo_path = 'https://cdn-ak.f.st-hatena.com/images/fotolife/S/SikisimaHisayuki/20170905/20170905123623.jpg';
