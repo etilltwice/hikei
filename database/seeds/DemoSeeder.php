@@ -19,6 +19,7 @@ class DemoSeeder extends Seeder
         //  brandtable作成
         DB::table('brands')->truncate();
         $brand = new Brand;
+        $brand->account_id = 'patagonia';
         $brand->brand_name = 'patagonia';
         $brand->website_url = 'https://patagonia.com';
         $brand->caption = '最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。';

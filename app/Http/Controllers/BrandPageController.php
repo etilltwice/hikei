@@ -12,17 +12,14 @@ class BrandPageController extends Controller
     public function __invoke(Request $request)
     {
         $brand_id = $request->brand_id;
-        // $feeds = Brand::with(['projects'])
-        //     ->where('brands.id', $brand_id)
-        //     ->first();
-        $feeds = \DB::table('brands')
+        $data = \DB::table('brands')
             ->where('id', $brand_id)
             ->select(
-                'account_id  as brand_official',
-                'brand_name  as brand_name',
-                'website_url as brand_url',
-                'caption     as brand_caption',
-                'logo_path   as brand_logo'
+                'account_id',
+                'brand_name',
+                'website_url',
+                'caption',
+                'logo_path'
             )
             ->get();
 
@@ -40,10 +37,10 @@ class BrandPageController extends Controller
             ->get();
         $projectimages = ['projectimages' => $child];
 
-        // データの統合
-        $feeds->push($projectimages);
+        // データの加工
+        $feeds = $data->push($projectimages);
 
-        return response()->json($feeds);
-        // return new \App\Http\Resources\BrandPage($feeds);
+        // dump(new \App\Http\Resources\BrandPage($feeds));
+        return new \App\Http\Resources\BrandPage($feeds);
     }
 }
