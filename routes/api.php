@@ -49,5 +49,5 @@ Route::post('/product', 'ProductController@create');
 Route::post('/temp_image', 'TempImageController');
 
 // 色々のテスト用
-Route::get('/hoge/{product_id}', 'HogeControler@input');
+Route::get('/hoge/{product_id?}', 'HogeControler@input');
 Route::get('/hogehoge', 'HogeControler@output');
