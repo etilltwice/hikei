@@ -30,7 +30,7 @@ Route::get('/brand_page/{brand_id}', 'BrandPageController');
 //ブランド情報取得 O
 Route::get('/brand/{brand_id}', 'BrandController@read');
 
-// ブランド情報更新
+// ブランド情報更新 O
 Route::post('/brand/{brand_id}', 'BrandController@update');
 
 // プロジェクト情報取得 O
@@ -39,14 +39,20 @@ Route::get('/project_view/{project_id}', 'ProjectViewController');
 // プロジェクト関連 O
 Route::get('/project/{project_id}', 'ProjectController@read');
 
-// プロダクト情報取得 O
-Route::get('/product_get/{product_id}', 'ProductController@read');
+// プロジェクト作成 O
+Route::post('/project', 'ProjectController@create');
 
-// プロダクト情報作成
+// プロジェクト画像簡易アップロード
+Route::post('/project/image', 'ProjectController@image');
+
+// プロダクト情報取得 O
+Route::get('/product/{product_id}', 'ProductController@read');
+
+// プロダクト情報作成 O
 Route::post('/product', 'ProductController@create');
 
-// 仮イメージテーブル
-Route::post('/temp_image', 'TempImageController');
+// 仮イメージテーブル O
+Route::post('/image_upload', 'TempImageController');
 
 // 色々のテスト用
 Route::get('/hoge/{product_id?}', 'HogeControler@input');

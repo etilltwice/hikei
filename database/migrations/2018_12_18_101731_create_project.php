@@ -17,7 +17,7 @@ class CreateProject extends Migration
             $table->mediumIncrements('id');
             $table->string('name', '50');
             $table->smallInteger('brand_id')->unsigned();
-            $table->mediumInteger('product_id')->unsigned();
+            $table->mediumInteger('product_id')->unsigned()->nullable();
             $table->string('caption', '2200')->nullable();
             $table->timestamps();
         });
