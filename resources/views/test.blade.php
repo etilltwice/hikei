@@ -20,7 +20,7 @@
 <body>
     <h1>一時イメージ入力テスト欄</h1>
     <table>
-        <form action='/web/temp_image' method='POST' enctype="multipart/form-data" >
+        <form action='/api/image_upload' method='POST' enctype="multipart/form-data" >
             {{csrf_field()}}
             <tr><th>入力データ型</th>    <th>テキストボックス</th></tr>
             <tr><td>file: </td><td><input type="file" name="images"></td></tr>

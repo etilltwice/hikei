@@ -105,8 +105,13 @@ class DemoSeeder extends Seeder
                 'project_id' => '2'
             ],
             [
-                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw39ea6eec/images/hi-res/52550_OPIB_LS.jpg?sw=750&sh=750&sm=fit&sfrm=png',
-                'caption' => '海上がりにヘンプ素材はピッタリです。',
+                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_CHASHMERE2.jpg',
+                'caption' => 'ステラ マッカートニーは「廃棄物」を再定義することで、素晴らしい素材の未来を守る支援をしています。',
+                'project_id' => '3'
+            ],
+            [
+                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_VISCOSE2.jpg',
+                'caption' => 'ステラ ビスコースのもととなった森は、持続可能に管理され、トレースすることも可能になっています。',
                 'project_id' => '3'
             ]
         ]);
