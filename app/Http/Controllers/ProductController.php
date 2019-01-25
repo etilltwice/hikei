@@ -55,7 +55,6 @@ class ProductController extends Controller
                 $temp_path = TempImage::where('id', $json[$count])
                     ->select('path')
                     ->first();
-                // Todo
                 $path = str_replace('temp/', '', $temp_path->path);
                 $trans_path = 'public/' . $path;
 
@@ -71,7 +70,7 @@ class ProductController extends Controller
                 TempImage::where('id', $json[$count])
                     ->delete();
             }    // トランザクションの中身を出力
-            return $product_id;
+            return response()->json($product_id);
         });
             // createのレスポンス
         return $product_id;

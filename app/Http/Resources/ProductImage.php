@@ -14,10 +14,18 @@ class ProductImage extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'product_image_id' => $this->id,
-            'product_image_path' => $this->path,
-            'product_image_caption' => $this->caption
-        ];
+        if ($this->id <= 8) {
+            return [
+                'product_image_id' => $this->id,
+                'product_image_path' => $this->path,
+                'product_image_caption' => $this->caption
+            ];
+        } else {
+            return [
+                'product_image_id' => $this->id,
+                'product_image_path' => $secure_asset($this->path),
+                'product_image_caption' => $this->caption
+            ];
+        }
     }
 }

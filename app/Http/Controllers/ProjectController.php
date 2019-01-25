@@ -64,7 +64,7 @@ class ProjectController extends Controller
             return $project_id;
         });
         // createのレスポンス
-        return $project_id;
+        return response()->json($project_id);
     }
 
     public function image(Request $request)
