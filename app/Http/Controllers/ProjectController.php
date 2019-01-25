@@ -64,7 +64,8 @@ class ProjectController extends Controller
             return $project_id;
         });
         // createのレスポンス
-        return response()->json($project_id);
+        $back = ['project_id' => $project_id];
+        return response()->json($back);
     }
 
     public function image(Request $request)
@@ -73,13 +74,13 @@ class ProjectController extends Controller
         $temp_path = TempImage::where('id', $request->input('temp_image_id'))
             ->select('path')
             ->first();
-        $ext = substr($temp_path->path, strrpos($temp_path->path, '.'));
-        $trans_path = 'public/' . uniqid() . $ext;
+        $path = str_replace('temp/', '', $temp_path->path);
+        $trans_path = 'public/' . $path;
 
         // 画像データ移動
         Storage::move($temp_path->path, $trans_path);
-        DB::table('project_images')->insert([
-            'path' => $trans_path,
+        $project_id->DB::table('project_images')->insertGetId([
+            'path' => $path,
             'project_id' => $request->input('project_id'),
             'caption' => $request->input('project_image_caption')
         ]);
@@ -87,5 +88,7 @@ class ProjectController extends Controller
         // temptableのデータを消去
         TempImage::where('id', $request->input('temp_image_id'))
             ->delete();
+        $back = ['project_id' => $project_id];
+        return response()->json($back);
     }
 }

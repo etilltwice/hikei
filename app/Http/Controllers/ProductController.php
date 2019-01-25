@@ -70,9 +70,10 @@ class ProductController extends Controller
                 TempImage::where('id', $json[$count])
                     ->delete();
             }    // トランザクションの中身を出力
-            return response()->json($product_id);
+            return $product_id;
         });
-            // createのレスポンス
-        return $product_id;
+        // createのレスポンス
+        $back = ['product_id' => $product_id];
+        return $back;
     }
 }

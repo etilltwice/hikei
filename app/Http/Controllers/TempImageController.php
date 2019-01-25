@@ -22,6 +22,7 @@ class TempImageController extends Controller
         $image_id = \DB::table('temp_images')->insertGetId([
             'path' => $path,
         ]);
-        return response()->json($image_id);
+        $back = ['temp_image_id' => $image_id];
+        return response()->json($back);
     }
 }
