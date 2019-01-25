@@ -55,14 +55,15 @@ class ProductController extends Controller
                 $temp_path = TempImage::where('id', $json[$count])
                     ->select('path')
                     ->first();
-                $ext = substr($temp_path->path, strrpos($temp_path->path, '.'));
-                $trans_path = 'public/' . uniqid() . $ext;
+                // Todo
+                $path = str_replace('temp/', '', $temp_path->path);
+                $trans_path = 'public/' . $path;
 
 
                 // 画像データ移動
                 Storage::move($temp_path->path, $trans_path);
                 DB::table('product_images')->insert([
-                    'path' => $trans_path,
+                    'path' => $path,
                     'product_id' => $product_id
                 ]);
 

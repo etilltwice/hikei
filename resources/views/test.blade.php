@@ -44,23 +44,7 @@
             <tr><td></td><td><input type="submit" value="GO"></td></tr>
         </form>
     </table>
-    <h1>プロダクト作成用入力テスト欄</h1>
-    <table>
-        <form action='/api/product' method='POST' enctype="application/json">
-            {{csrf_field()}}
-            <tr><th>入力データ型</th>    <th>テキストボックス</th></tr>
-            <tr><td>brand_id</td>       <td><input type="text" name="brand_id"></td></tr>
-            <tr><td>project_name</td>   <td><input type="text" name="project_name"></td></tr>
-            <tr><td>project_caption</td><td><input type="text" name="project_caption"></td></tr>
-            <tr><td>product_name</td>   <td><input type="text" name="product_name"></td></tr>
-            <tr><td>product_price</td>  <td><input type="text" name="product_price"></td></tr>
-            <tr><td>product_cost</td>   <td><input type="text" name="product_cost"></td></tr>
-            <tr><td>product_size</td>   <td><input type="text" name="product_size"></td></tr>
-            <tr><td>product_caption</td><td><input type="text" name="product_caption"></td></tr>
-            <tr><td></td><td><input type="text" name="hoge"></td></tr>
-            <tr><td></td><td><input type="submit" value="GO"></td></tr>
-        </form>
-    </table>
+
     <h1>プロジェクト作成</h1>
     <table>
         <form action='/api/project' method='POST' enctype="application/json" >

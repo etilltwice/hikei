@@ -16,7 +16,7 @@ class ProjectImage extends JsonResource
     {
         return [
             'project_image_id' => $this->id,
-            'project_image_path' => $this->path,
+            'project_image_path' => secure_asset('storage/' . $this->path),
             'project_image_caption' => $this->caption,
         ];
     }

@@ -45,13 +45,13 @@ class ProjectController extends Controller
                 $temp_path = TempImage::where('id', $project_image->temp_image_id)
                     ->select('path')
                     ->first();
-                $ext = substr($temp_path->path, strrpos($temp_path->path, '.'));
-                $trans_path = 'public/' . uniqid() . $ext;
+                $path = str_replace('temp/', '', $temp_path->path);
+                $trans_path = 'public/' . $path;
 
                 // 画像データ移動
                 Storage::move($temp_path->path, $trans_path);
                 DB::table('project_images')->insert([
-                    'path' => $trans_path,
+                    'path' => $path,
                     'project_id' => $project_id,
                     'caption' => $project_image->project_image_caption
                 ]);
