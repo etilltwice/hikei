@@ -1,12 +1,8 @@
 <?php
 
-use App\Eloquents\Brand;
-use App\Eloquents\Project;
-use App\Eloquents\ProjectImage;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class DemoSeeder extends Seeder
+class GGASeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,17 +15,17 @@ class DemoSeeder extends Seeder
         //  brandtable作成
         DB::table('brands')->truncate();
         DB::table('brands')->insert([[
-            'account_id' = 'patagonia',
-            'brand_name' = 'patagonia.inc',
-            'website_url' = 'https://patagonia.com',
-            'caption' = '最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。',
-            'logo_path' = 'https://cdn-ak.f.st-hatena.com/images/fotolife/S/SikisimaHisayuki/20170905/20170905123623.jpg'
+            'account_id' => 'patagonia',
+            'brand_name' => 'patagonia.inc',
+            'website_url' => 'https://patagonia.com',
+            'caption' => '最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。',
+            'logo_path' => 'https://cdn-ak.f.st-hatena.com/images/fotolife/S/SikisimaHisayuki/20170905/20170905123623.jpg'
         ], [
-            'account_id' = 'Stella McCartney',
-            'brand_name' = 'Stella McCartney',
-            'website_url' = 'https://www.stellamccartney.com/jp',
-            'caption' = '変化の担い手となり、今、そしてこれから私たちが住む、美しくサステナブルな世界にふさわしい方法で高級品を作るために、従来の境界を押しひろげることに挑み続けます。妥協はしません。',
-            'logo_path' = 'https://cdn.businessoffashion.com/uploads/media/bof_company_logo/0001/78/thumb_41cc1075b23c5b9be6d2133f96060918d9e8a07d_bof_company_logo_header.jpeg'
+            'account_id' => 'Stella McCartney',
+            'brand_name' => 'Stella McCartney',
+            'website_url' => 'https://www.stellamccartney.com/jp',
+            'caption' => '変化の担い手となり、今、そしてこれから私たちが住む、美しくサステナブルな世界にふさわしい方法で高級品を作るために、従来の境界を押しひろげることに挑み続けます。妥協はしません。',
+            'logo_path' => 'https://cdn.businessoffashion.com/uploads/media/bof_company_logo/0001/78/thumb_41cc1075b23c5b9be6d2133f96060918d9e8a07d_bof_company_logo_header.jpeg'
         ]]);
 
         // projecttable作成
@@ -110,9 +106,24 @@ class DemoSeeder extends Seeder
                 'project_id' => '3'
             ],
             [
-                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_VISCOSE2.jpg',
+                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT10-1.jpg',
                 'caption' => 'ステラ ビスコースのもととなった森は、持続可能に管理され、トレースすることも可能になっています。',
                 'project_id' => '3'
+            ],
+            [
+                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT36-1.jpg',
+                'caption' => '有毒化学物質や難分解性化学物質を使用しないオーガニックコットンを成育することで、節水およびより健全な土壌が確保でき、環境にも農家にも地域コミュニティにも良い影響を与えることができます。',
+                'project_id' => '3'
+            ],
+            [
+                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT30.jpg',
+                'caption' => '望ましい仕事を供給して人々のスキルを育成し雇用者の声を強め、弱い立場の人々を擁護できるような、現代的で回復力のあるサプライチェーンを構築することが重要です。',
+                'project_id' => '4'
+            ],
+            [
+                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_SOCIAL_COLLABORATIONS2.jpg',
+                'caption' => 'コラボレーターやNGO（非政府組織）と力を合わせステラ マッカートニーの掲げるサステナビリティの目標と循環型社会への想いを実現していきます。',
+                'project_id' => '4'
             ]
         ]);
 
@@ -132,6 +143,20 @@ class DemoSeeder extends Seeder
                 'cost' => 5000,
                 'size' => 'S,M,L',
                 'caption' => '私たちの多様な旅の遍歴を反映しながらハワイの伝統を讃えるシャツ。レラ・サンがイヴォン・シュイナードに付けたあだ名「オピヒ・マン」にちなんだプリントを採用。ビンテージ感を演出するドビー織りの風通しのよいソフトなヘンプ60％／リサイクル・ポリエステル35％／テンセル・リヨセル５％混紡素材を使用'
+            ],
+            [
+                'name' => 'モノグラム ケープ',
+                'price' => 244080,
+                'cost' => 10000,
+                'size' => 'S,M,L',
+                'caption' => '軽やかなコットンブレンドを使用してイタリアで製造したグラフィカルなケープです。エフォートレスで印象的なアイテムです。ビビッドなブルーのディテールとモノグラムのパネル使いが、ステラらしい大胆なデザインです。 '
+            ],
+            [
+                'name' => 'エクリプス ホワイト スニーカー',
+                'price' => 87480,
+                'cost' => 5000,
+                'size' => 'S,M,L',
+                'caption' => 'マジックテープで開閉するクールなストラップと明るいカラーのディテールで、エクリプス スニーカーがアップデートされました。休日にぴったりのエネルギーあふれるアイテムです。すべてのエクリプス スニーカーは、ベジタリアンの倫理観に基づいてエコアルターナッパレザー（合成皮革）で作られています。 '
             ]
         ]);
 
@@ -145,6 +170,14 @@ class DemoSeeder extends Seeder
             ], [
                 'product_id' => 2,
                 'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw105aae87/images/hi-res/52550_OPIC.jpg?sw=750&sh=750&sm=fit&sfrm=png',
+                'caption' => '正面'
+            ], [
+                'product_id' => 3,
+                'path' => 'https://www.stellamccartney.com/41/41847131un_12_c.jpg',
+                'caption' => '正面'
+            ], [
+                'product_id' => 4,
+                'path' => 'https://www.stellamccartney.com/11/11582028fk_12_h.jpg',
                 'caption' => '正面'
             ]
         ]);

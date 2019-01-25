@@ -79,7 +79,7 @@ class ProjectController extends Controller
 
         // 画像データ移動
         Storage::move($temp_path->path, $trans_path);
-        $project_id->DB::table('project_images')->insertGetId([
+        $project_id = DB::table('project_images')->insertGetId([
             'path' => $path,
             'project_id' => $request->input('project_id'),
             'caption' => $request->input('project_image_caption')
