@@ -26,7 +26,7 @@ class ProjectsInformation extends JsonResource
             'product_size' => $this->products->size,
             'product_caption' => $this->products->caption,
             'product_way' => $this->products->way,
-            'product_image_path' => $this->products->productimages[0]->path,
+            'product_image_path' => secure_asset('storage/' . $this->products->productimages[0]->path),
             'product_image_caption' => $this->products->productimages[0]->caption,
             'project_images' => ProjectImage::collection($this->projectimages)
         ];

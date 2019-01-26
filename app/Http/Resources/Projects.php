@@ -18,7 +18,7 @@ class Projects extends JsonResource
         return [
             'project_id' => $this->id,
             'project_name' => $this->name,
-            'project_image_path' => $this->projectimages->first(),
+            'project_image_path' => secure_asset('storage/' . $this->projectimages->first()->path),
             // 'project_image_path' => ProjectImage::where('project_id', $this->id)->first(),
         ];
     }
