@@ -15,11 +15,11 @@ class BrandPageController extends Controller
         $data = \DB::table('brands')
             ->where('id', $brand_id)
             ->select(
-                'account_id',
-                'brand_name',
-                'website_url',
-                'caption',
-                'logo_path'
+                'account_id  as brand_official',
+                'brand_name  as brand_name',
+                'website_url as brand_url',
+                'caption     as brand_caption',
+                'logo_path   as brand_logo'
             )
             ->get();
 
