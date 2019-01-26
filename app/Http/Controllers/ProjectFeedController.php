@@ -56,7 +56,7 @@ class ProjectFeedController extends Controller
 
         //url加工
         foreach ($feeds as $feed) {
-            $feed->project_image_path = secure_asset('public' . $feed->project_image_path);
+            $feed->project_image_path = secure_asset('public/' . $feed->project_image_path);
         }
 
         return response()->json($feeds);

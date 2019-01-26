@@ -53,7 +53,7 @@ class ProductFeedController extends Controller
 
         //url加工
         foreach ($feeds as $feed) {
-            $feed->product_image_path = secure_asset('public' . $feed->product_image_path);
+            $feed->product_image_path = secure_asset('public/' . $feed->product_image_path);
         }
 
         return response()->json($feeds);
