@@ -30,12 +30,12 @@ class BrandController extends Controller
         } else {
             Brand::where('id', $brand_id)
                 ->update([
-                    'account_id' => $request->input('account_id'),
+                    'brand_official' => $request->input('account_id'),
                     'brand_name' => $request->input('brand_name'),
-                    'website_url' => $request->input('brand_url'),
-                    'caption' => $request->input('brand_caption'),
-                    'phone_number' => $request->input('brand_telephone'),
-                    'logo_path' => $request->input('brand_logo')
+                    'brand_url' => $request->input('brand_url'),
+                    'brand_caption' => $request->input('brand_caption'),
+                    'phone_phonenumber' => $request->input('brand_telephone'),
+                    'brand_logo' => $request->input('brand_logo')
                 ]);
             return $msg = 'ブランド情報を更新しました';
         }

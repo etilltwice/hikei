@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class GGASeeder extends Seeder
 {
@@ -11,8 +12,34 @@ class GGASeeder extends Seeder
      */
     public function run()
     {
+
+        // //画像投稿関数
+        function ImageUp($image_path, $caption, $id, $table)
+        {
+            //データ加工
+            $path = uniqid() . '.jpg';
+            $trans_path = 'public/' . $path;
+
+            // 画像データ転写
+            Storage::copy('sample/' . $image_path, $trans_path);
+            if ($table == 'project_images') {
+                DB::table($table)->insert([
+                    'path' => $path,
+                    'project_id' => $id,
+                    'caption' => $caption
+                ]);
+            } else if ($table == 'product_images') {
+                DB::table($table)->insert([
+                    'path' => $path,
+                    'product_id' => $id,
+                    'caption' => $caption
+                ]);
+            }
+        }
+
+
         // GGA用サンプルデータ
-        //  brandtable作成
+        //  brandtable作成===========================================================
         DB::table('brands')->truncate();
         DB::table('brands')->insert([[
             'account_id' => 'patagonia',
@@ -28,8 +55,8 @@ class GGASeeder extends Seeder
             'logo_path' => 'https://cdn.businessoffashion.com/uploads/media/bof_company_logo/0001/78/thumb_41cc1075b23c5b9be6d2133f96060918d9e8a07d_bof_company_logo_header.jpeg'
         ]]);
 
-        // projecttable作成
-        DB::table('projects')->truncate();
+
+        // project作成==========================================================
         DB::table('projects')->insert([
             [
                 'name' => '環境と人にやさしいデニムをつくる',
@@ -57,75 +84,92 @@ class GGASeeder extends Seeder
             ]
         ]);
 
-        // projectimagetable作成
-        DB::table('project_images')->truncate();
-        DB::table('project_images')->insert([
-            [
-                'path' => 'https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024703/150730_ptgn_001.jpg',
-                'caption' => '『デニムは汚いビジネスだから』',
-                'project_id' => '1'
-            ],
-            [
-                'path' => 'https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024704/150730_ptgn_002.jpg',
-                'caption' => '私たちはデニムの製造基準に関する問題解決にフォーカスしています。',
-                'project_id' => '1'
-            ],
-            [
-                'path' => 'https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024704/150730_ptgn_003.jpg',
-                'caption' => '従来のデニムは汚いビジネスだ。だから私たちはジーンズの製造方法を変えることにした。他の製造者たちが私たちのあとに続き、デニム業界を変える手助けとなることを期待している',
-                'project_id' => '1'
-            ],
-            [
-                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw461f8d10/images/hi-res/56025_DDNM.jpg?sw=2000&sh=2000&sm=fit&sfrm=png',
-                'caption' => '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。',
-                'project_id' => '1'
-            ],
-            [
-                'path' => 'https://media3.s-nbcnews.com/j/newscms/2018_50/2682811/181213-hemp-farm-se-721p_25fe521bff30f5573830316b820150ae.fit-2000w.jpg',
-                'caption' => 'ヘンプは土壌を回復する効果もあります。',
-                'project_id' => '2'
-            ],
-            [
-                'path' => 'http://ja.ecofortex.com/Content/upload/2018239024/201801051319174818116.JPG',
-                'caption' => '我々は、厳格な基準が満たされている素晴らしい工場が仲間です。',
-                'project_id' => '2'
-            ],
-            [
-                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw105aae87/images/hi-res/52550_OPIC.jpg?sw=750&sh=750&sm=fit&sfrm=png',
-                'caption' => '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。',
-                'project_id' => '2'
-            ],
-            [
-                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw39ea6eec/images/hi-res/52550_OPIB_LS.jpg?sw=750&sh=750&sm=fit&sfrm=png',
-                'caption' => '海上がりにヘンプ素材はピッタリです。',
-                'project_id' => '2'
-            ],
-            [
-                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_CHASHMERE2.jpg',
-                'caption' => 'ステラ マッカートニーは「廃棄物」を再定義することで、素晴らしい素材の未来を守る支援をしています。',
-                'project_id' => '3'
-            ],
-            [
-                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT10-1.jpg',
-                'caption' => 'ステラ ビスコースのもととなった森は、持続可能に管理され、トレースすることも可能になっています。',
-                'project_id' => '3'
-            ],
-            [
-                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT36-1.jpg',
-                'caption' => '有毒化学物質や難分解性化学物質を使用しないオーガニックコットンを成育することで、節水およびより健全な土壌が確保でき、環境にも農家にも地域コミュニティにも良い影響を与えることができます。',
-                'project_id' => '3'
-            ],
-            [
-                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT30.jpg',
-                'caption' => '望ましい仕事を供給して人々のスキルを育成し雇用者の声を強め、弱い立場の人々を擁護できるような、現代的で回復力のあるサプライチェーンを構築することが重要です。',
-                'project_id' => '4'
-            ],
-            [
-                'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_SOCIAL_COLLABORATIONS2.jpg',
-                'caption' => 'コラボレーターやNGO（非政府組織）と力を合わせステラ マッカートニーの掲げるサステナビリティの目標と循環型社会への想いを実現していきます。',
-                'project_id' => '4'
-            ]
-        ]);
+
+        // projecttable作成==========================================================
+        DB::table('projects')->truncate();
+
+        ImageUp('project_image1.jpg', '『デニムは汚いビジネスだから』', 1, 'project_images');
+        ImageUp('project_image2.jpg', '私たちはデニムの製造基準に関する問題解決にフォーカスしています。', 1, 'project_images');
+        ImageUp('project_image3.jpg', '従来のデニムは汚いビジネスだ。だから私たちはジーンズの製造方法を変えることにした。他の製造者たちが私たちのあとに続き、デニム業界を変える手助けとなることを期待している', 1, 'project_images');
+        ImageUp('project_image4.jpg', '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。', 1, 'project_images');
+        ImageUp('project_image5.jpg', 'ヘンプは土壌を回復する効果もあります。', 2, 'project_images');
+        ImageUp('project_image6.jpg', '我々は、厳格な基準が満たされている素晴らしい工場が仲間です。', 2, 'project_images');
+        ImageUp('project_image7.jpg', '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。', 2, 'project_images');
+        ImageUp('project_image8.jpg', '海上がりにヘンプ素材はピッタリです。', 2, 'project_images');
+        ImageUp('project_image9.jpg', 'ステラ マッカートニーは「廃棄物」を再定義することで、素晴らしい素材の未来を守る支援をしています。', 3, 'project_images');
+        ImageUp('project_image10.jpg', 'ステラ ビスコースのもととなった森は、持続可能に管理され、トレースすることも可能になっています。', 3, 'project_images');
+        ImageUp('project_image11.jpg', '有毒化学物質や難分解性化学物質を使用しないオーガニックコットンを成育することで、節水およびより健全な土壌が確保でき、環境にも農家にも地域コミュニティにも良い影響を与えることができます。', 3, 'project_images');
+
+
+        // // projectimagetable作成
+        // DB::table('project_images')->truncate();
+        // DB::table('project_images')->insert([
+        //     [
+        //         'path' => 'https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024703/150730_ptgn_001.jpg',
+        //         'caption' => '『デニムは汚いビジネスだから』',
+        //         'project_id' => '1'
+        //     ],
+        //     [
+        //         'path' => 'https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024704/150730_ptgn_002.jpg',
+        //         'caption' => '私たちはデニムの製造基準に関する問題解決にフォーカスしています。',
+        //         'project_id' => '1'
+        //     ],
+        //     [
+        //         'path' => 'https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024704/150730_ptgn_003.jpg',
+        //         'caption' => '従来のデニムは汚いビジネスだ。だから私たちはジーンズの製造方法を変えることにした。他の製造者たちが私たちのあとに続き、デニム業界を変える手助けとなることを期待している',
+        //         'project_id' => '1'
+        //     ],
+        //     [
+        //         'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw461f8d10/images/hi-res/56025_DDNM.jpg?sw=2000&sh=2000&sm=fit&sfrm=png',
+        //         'caption' => '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。',
+        //         'project_id' => '1'
+        //     ],
+        //     [
+        //         'path' => 'https://media3.s-nbcnews.com/j/newscms/2018_50/2682811/181213-hemp-farm-se-721p_25fe521bff30f5573830316b820150ae.fit-2000w.jpg',
+        //         'caption' => 'ヘンプは土壌を回復する効果もあります。',
+        //         'project_id' => '2'
+        //     ],
+        //     [
+        //         'path' => 'http://ja.ecofortex.com/Content/upload/2018239024/201801051319174818116.JPG',
+        //         'caption' => '我々は、厳格な基準が満たされている素晴らしい工場が仲間です。',
+        //         'project_id' => '2'
+        //     ],
+        //     [
+        //         'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw105aae87/images/hi-res/52550_OPIC.jpg?sw=750&sh=750&sm=fit&sfrm=png',
+        //         'caption' => '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。',
+        //         'project_id' => '2'
+        //     ],
+        //     [
+        //         'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw39ea6eec/images/hi-res/52550_OPIB_LS.jpg?sw=750&sh=750&sm=fit&sfrm=png',
+        //         'caption' => '海上がりにヘンプ素材はピッタリです。',
+        //         'project_id' => '2'
+        //     ],
+        //     [
+                // 'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_CHASHMERE2.jpg',
+                // 'caption' => 'ステラ マッカートニーは「廃棄物」を再定義することで、素晴らしい素材の未来を守る支援をしています。',
+                // 'project_id' => '3'
+        //     ],
+        //     [
+                // 'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT10-1.jpg',
+                // 'caption' => 'ステラ ビスコースのもととなった森は、持続可能に管理され、トレースすることも可能になっています。',
+                // 'project_id' => '3'
+        //     ],
+        //     [
+                // 'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT36-1.jpg',
+                // 'caption' => '有毒化学物質や難分解性化学物質を使用しないオーガニックコットンを成育することで、節水およびより健全な土壌が確保でき、環境にも農家にも地域コミュニティにも良い影響を与えることができます。',
+                // 'project_id' => '3'
+        //     ],
+        //     [
+        //         'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT30.jpg',
+        //         'caption' => '望ましい仕事を供給して人々のスキルを育成し雇用者の声を強め、弱い立場の人々を擁護できるような、現代的で回復力のあるサプライチェーンを構築することが重要です。',
+        //         'project_id' => '4'
+        //     ],
+        //     [
+        //         'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_SOCIAL_COLLABORATIONS2.jpg',
+        //         'caption' => 'コラボレーターやNGO（非政府組織）と力を合わせステラ マッカートニーの掲げるサステナビリティの目標と循環型社会への想いを実現していきます。',
+        //         'project_id' => '4'
+        //     ]
+        // ]);
 
         //producttable作成
         DB::table('products')->truncate();

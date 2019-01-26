@@ -41,7 +41,6 @@ class DemoSeeder extends Seeder
         }
 
 
-        // GGA用サンプルデータ
         //  brandtable作成
         DB::table('brands')->truncate();
         $brand = new Brand;
