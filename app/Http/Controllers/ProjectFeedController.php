@@ -21,7 +21,7 @@ class ProjectFeedController extends Controller
             $feeds = \DB::table('project_images')
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
-                ->orderby('project_images.updated_at', 'desc')
+                ->orderby('project_images.updated_at', 'asc')
                 ->skip($next_id)
                 ->take(10)
                 ->select(
@@ -39,7 +39,7 @@ class ProjectFeedController extends Controller
             $feeds = \DB::table('project_images')
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
-                ->orderby('project_images.updated_at', 'desc')
+                ->orderby('project_images.updated_at', 'asc')
                 ->take(10)
                 ->select(
                     'projects.id            as project_id',
