@@ -23,7 +23,7 @@ class ProjectFeedController extends Controller
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('project_images.id', 'desc')
                 ->skip($next_id)
-                // ->take(10)
+                ->take(10)
                 ->select(
                     'projects.id            as project_id',
                     'projects.name          as project_name',
@@ -40,7 +40,7 @@ class ProjectFeedController extends Controller
                 ->join('projects', 'project_images.project_id', '=', 'projects.id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('project_images.id', 'desc')
-                // ->take(10)
+                ->take(10)
                 ->select(
                     'projects.id            as project_id',
                     'projects.name          as project_name',
