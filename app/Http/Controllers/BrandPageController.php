@@ -15,11 +15,11 @@ class BrandPageController extends Controller
         $data = \DB::table('brands')
             ->where('id', $brand_id)
             ->select(
-                'account_id  as brand_official',
-                'brand_name  as brand_name',
-                'website_url as brand_url',
-                'caption     as brand_caption',
-                'logo_path   as brand_logo'
+                'account_id',
+                'brand_name',
+                'website_url',
+                'caption',
+                'logo_path'
             )
             ->get();
 
@@ -43,11 +43,11 @@ class BrandPageController extends Controller
 
         // 送信データの整形
         $feeds = (object)[
-            'account_id' => $data[0]->account_id,
+            'brand_official' => $data[0]->account_id,
             'brand_name' => $data[0]->brand_name,
-            'website_url' => $data[0]->website_url,
-            'caption' => $data[0]->caption,
-            'logo_path' => $data[0]->logo_path,
+            'brand_url' => $data[0]->website_url,
+            'brand_caption' => $data[0]->caption,
+            'brand_logo' => $data[0]->logo_path,
             'projectimages' => $child
         ];
 
