@@ -17,7 +17,7 @@ class ProductFeedController extends Controller
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('product_images.updated_at', 'desc')
                 ->skip($next_id)
-                // ->take(10)
+                ->take(10)
                 ->select(
                     'projects.id         as project_id',
                     'projects.name       as project_name',
@@ -36,7 +36,7 @@ class ProductFeedController extends Controller
                 ->join('projects', 'products.id', '=', 'projects.product_id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
                 ->orderby('product_images.updated_at', 'desc')
-                // ->take(10)
+                ->take(10)
                 ->select(
                     'projects.id         as project_id',
                     'projects.name       as project_name',

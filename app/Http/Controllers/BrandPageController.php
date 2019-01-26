@@ -35,13 +35,23 @@ class BrandPageController extends Controller
                 'projects.name       as project_name'
             )
             ->get();
-        $projectimages = ['projectimages' => $child];
 
-        // データの加工
-        $feeds = $data->push($projectimages);
+        // project_image_pathの加工
+        foreach ($child as $element) {
+            $element->project_image_path = secure_asset('storage/' . $element->project_image_path);
+        }
 
-        // dump(new \App\Http\Resources\BrandPage($feeds));
-        // return new \App\Http\Resources\BrandPage($feeds);
+        // 送信データの整形
+        $feeds = (object)[
+            'account_id' => $data[0]->account_id,
+            'brand_name' => $data[0]->brand_name,
+            'website_url' => $data[0]->website_url,
+            'caption' => $data[0]->caption,
+            'logo_path' => $data[0]->logo_path,
+            'projectimages' => $child
+        ];
+
+        // 送信
         return response()->json($feeds);
     }
 }

@@ -21,7 +21,7 @@ class BrandPage extends JsonResource
             'brand_caption' => $this[0]->caption,
             'brand_logo' => $this[0]->logo_path,
             // 'projectimages' => secure_asset('storage/' . $this[1]),
-            'projectimages' => 'storage/' . $this[1]->projectimages[0]->path,
+            'projectimages' => ProjectImage::collection($this[1]->projectimages),
         ];
     }
 }

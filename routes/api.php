@@ -20,9 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // projectfeed O
 Route::get('/project_feeds/{next_id?}', 'ProjectFeedController');
 
-// ここ以下はテスト前
 // productfeed O
-Route::get('/product_feeds/{next_id?}', 'ProductFeedController')->name('hoge');
+Route::get('/product_feeds/{next_id?}', 'ProductFeedController');
 
 // ブランドページ O
 Route::get('/brand_page/{brand_id}', 'BrandPageController');
@@ -48,6 +47,7 @@ Route::post('/project/image', 'ProjectController@image');
 // プロダクト情報取得 O
 Route::get('/product/{product_id}', 'ProductController@read');
 
+// ここ以下はテスト前
 // プロダクト情報作成 O
 Route::post('/product', 'ProductController@create');
 
