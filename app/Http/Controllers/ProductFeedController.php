@@ -11,7 +11,7 @@ class ProductFeedController extends Controller
     public function __invoke(Request $request, $next_id = '')
     {
         if (isset($next_id)) {
-            $feed = \DB::table('product_images')
+            $feeds = \DB::table('product_images')
                 ->join('products', 'product_images.product_id', '=', 'products.id')
                 ->join('projects', 'products.id', '=', 'projects.product_id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
@@ -31,7 +31,7 @@ class ProductFeedController extends Controller
                 )
                 ->get();
         } else {
-            $feed = \DB::table('product_images')
+            $feeds = \DB::table('product_images')
                 ->join('products', 'product_images.product_id', '=', 'products.id')
                 ->join('projects', 'products.id', '=', 'projects.product_id')
                 ->join('brands', 'brands.id', '=', 'projects.brand_id')
@@ -50,6 +50,12 @@ class ProductFeedController extends Controller
                 )
                 ->get();
         }
-        return response()->json($feed);
+
+        //url加工
+        foreach ($feeds as $feed) {
+            $feed->product_image_path = secure_asset('public' . $feed->product_image_path);
+        }
+
+        return response()->json($feeds);
     }
 }

@@ -15,14 +15,14 @@ class ProjectFeed extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'project_image_id' => $this->project_image_id,
-                // 'project_image_caption'
-                // 'project_image_path'
-                // 'project_id'
-                // 'project_name'
-                // 'project_caption'
-                // 'brand_id'
-                // 'brand_logo'
+            'project_id' => $this->project_id,
+            // 'project_name' => $this->project_name,
+            // 'project_caption' => $this->project_caption,
+            // 'project_image_id' => $this->project_image_id,
+            // 'project_image_caption' => $this->project_image_caption,
+            // 'project_image_path' => secure_asset('public/' . $this->project_image_path),
+            // 'brand_id' => $this->brand_id,
+            // 'brand_logo' => $this->brand_logo
         ];
     }
 }
