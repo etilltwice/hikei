@@ -1,5 +1,8 @@
 <?php
 
+use App\Task;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +17,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
 
 // 実験用
 Route::get('/test', function () {

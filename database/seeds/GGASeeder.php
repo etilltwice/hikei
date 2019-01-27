@@ -99,6 +99,8 @@ class GGASeeder extends Seeder
         ImageUp('project_image9.jpg', 'ステラ マッカートニーは「廃棄物」を再定義することで、素晴らしい素材の未来を守る支援をしています。', 3, 'project_images');
         ImageUp('project_image10.jpg', 'ステラ ビスコースのもととなった森は、持続可能に管理され、トレースすることも可能になっています。', 3, 'project_images');
         ImageUp('project_image11.jpg', '有毒化学物質や難分解性化学物質を使用しないオーガニックコットンを成育することで、節水およびより健全な土壌が確保でき、環境にも農家にも地域コミュニティにも良い影響を与えることができます。', 3, 'project_images');
+        ImageUp('project_image12.jpg', '望ましい仕事を供給して人々のスキルを育成し雇用者の声を強め、弱い立場の人々を擁護できるような、現代的で回復力のあるサプライチェーンを構築することが重要です。', 4, 'project_images');
+        ImageUp('project_image13.jpg', 'コラボレーターやNGO（非政府組織）と力を合わせステラ マッカートニーの掲げるサステナビリティの目標と循環型社会への想いを実現していきます。', 4, 'project_images');
 
 
         // // projectimagetable作成
@@ -160,14 +162,14 @@ class GGASeeder extends Seeder
                 // 'project_id' => '3'
         //     ],
         //     [
-        //         'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT30.jpg',
-        //         'caption' => '望ましい仕事を供給して人々のスキルを育成し雇用者の声を強め、弱い立場の人々を擁護できるような、現代的で回復力のあるサプライチェーンを構築することが重要です。',
-        //         'project_id' => '4'
+                // 'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_AMBIENT_PORTRAIT30.jpg',
+                // 'caption' => '望ましい仕事を供給して人々のスキルを育成し雇用者の声を強め、弱い立場の人々を擁護できるような、現代的で回復力のあるサプライチェーンを構築することが重要です。',
+                // 'project_id' => '4'
         //     ],
         //     [
-        //         'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_SOCIAL_COLLABORATIONS2.jpg',
-        //         'caption' => 'コラボレーターやNGO（非政府組織）と力を合わせステラ マッカートニーの掲げるサステナビリティの目標と循環型社会への想いを実現していきます。',
-        //         'project_id' => '4'
+                // 'path' => 'https://www.stellamccartney.com/cloud/stellawp/uploads/2018/01/ARTICLE_DIMS_SOCIAL_COLLABORATIONS2.jpg',
+                // 'caption' => 'コラボレーターやNGO（非政府組織）と力を合わせステラ マッカートニーの掲げるサステナビリティの目標と循環型社会への想いを実現していきます。',
+                // 'project_id' => '4'
         //     ]
         // ]);
 
@@ -206,24 +208,30 @@ class GGASeeder extends Seeder
 
         // productimagetable作成
         DB::table('product_images')->truncate();
-        DB::table('product_images')->insert([
-            [
-                'product_id' => 1,
-                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw2440aa94/images/hi-res/56195_DDNM.jpg?sw=2000&sh=2000&sm=fit&sfrm=png',
-                'caption' => '正面'
-            ], [
-                'product_id' => 2,
-                'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw105aae87/images/hi-res/52550_OPIC.jpg?sw=750&sh=750&sm=fit&sfrm=png',
-                'caption' => '正面'
-            ], [
-                'product_id' => 3,
-                'path' => 'https://www.stellamccartney.com/41/41847131un_12_c.jpg',
-                'caption' => '正面'
-            ], [
-                'product_id' => 4,
-                'path' => 'https://www.stellamccartney.com/11/11582028fk_12_h.jpg',
-                'caption' => '正面'
-            ]
-        ]);
+
+        ImageUp('project_image4.jpg', '正面', 1, 'product_images');
+        ImageUp('project_image7.jpg', '正面', 2, 'product_images');
+        ImageUp('product_image1.jpg', '正面', 3, 'product_images');
+        ImageUp('product_image2.jpg', '正面', 4, 'product_images');
+
+        // DB::table('product_images')->insert([
+        //     [
+        //         'product_id' => 1,
+        //         'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw2440aa94/images/hi-res/56195_DDNM.jpg?sw=2000&sh=2000&sm=fit&sfrm=png',
+        //         'caption' => '正面'
+        //     ], [
+        //         'product_id' => 2,
+        //         'path' => 'https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw105aae87/images/hi-res/52550_OPIC.jpg?sw=750&sh=750&sm=fit&sfrm=png',
+        //         'caption' => '正面'
+        //     ], [
+                // 'product_id' => 3,
+                // 'path' => 'https://www.stellamccartney.com/41/41847131un_12_c.jpg',
+                // 'caption' => '正面'
+        //     ], [
+        //         'product_id' => 4,
+        //         'path' => 'https://www.stellamccartney.com/11/11582028fk_12_h.jpg',
+        //         'caption' => '正面'
+        //     ]
+        // ]);
     }
 }
