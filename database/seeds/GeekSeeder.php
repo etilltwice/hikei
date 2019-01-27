@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
-class GGASeeder extends Seeder
+class GeekSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -233,5 +233,6 @@ class GGASeeder extends Seeder
         //         'caption' => '正面'
         //     ]
         // ]);
+
     }
 }
