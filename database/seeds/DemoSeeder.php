@@ -61,6 +61,7 @@ class DemoSeeder extends Seeder
 
 
         // project作成==========================================================
+        DB::table('projects')->truncate();
         DB::table('projects')->insert([
             [
                 'name' => '環境と人にやさしいデニムをつくる',
@@ -90,7 +91,7 @@ class DemoSeeder extends Seeder
 
 
         // projecttable作成==========================================================
-        DB::table('projects')->truncate();
+        DB::table('project_images')->truncate();
 
         ImageUp('project_image1.jpg', '『デニムは汚いビジネスだから』', 1, 'project_images');
         ImageUp('project_image2.jpg', '私たちはデニムの製造基準に関する問題解決にフォーカスしています。', 1, 'project_images');
