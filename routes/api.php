@@ -35,8 +35,8 @@ Route::post('/brand/{brand_id}', 'BrandController@update');
 // プロジェクト情報取得 O
 Route::get('/project_view/{project_id}', 'ProjectViewController');
 
-// プロジェクト関連 O
-Route::get('/project/{project_id}', 'ProjectController@read');
+// ブランド関連プロジェクト取得 O
+Route::get('/project/{brand_id}', 'ProjectController@read');
 
 // プロジェクト作成 O
 Route::post('/project', 'ProjectController@create');

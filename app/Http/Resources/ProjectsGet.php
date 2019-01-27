@@ -15,9 +15,9 @@ class ProjectsGet extends JsonResource
     public function toArray($request)
     {
         return [
+            'project_id' => $this->id,
             'project_name' => $this->name,
-            'project_caption' => $this->caption,
-            'project_name' => ProjectImage::collection($this->projectImages)
+            // 'project_caption' => $this->caption,
         ];
     }
 }

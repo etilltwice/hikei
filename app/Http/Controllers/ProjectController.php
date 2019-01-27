@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Eloquents\Project;
 use App\Eloquents\TempImage;
+use App\Http\Resources\ProjectsGet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
-    public function read(Request $request)
+    public function read(Request $request, $brand_id)
     {
         // プロジェクトデータ取得
-        $project_id = $request->project_id;
-        $feeds = Project::with(['projectimages'])
-            ->where('id', $project_id)
-            ->first();
-        return new \App\Http\Resources\ProjectsGet($feeds);
-        // return response()->json($feeds);
+        $feeds = Project::where('brand_id', $brand_id)
+            ->get();
+
+        $back = \App\Http\Resources\ProjectsGet::collection($feeds);
+        // return new \App\Http\Resources\ProjectsGet($feeds);
+        return response()->json($back);
     }
 
     public function create(Request $request)
