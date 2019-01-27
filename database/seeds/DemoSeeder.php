@@ -93,19 +93,22 @@ class DemoSeeder extends Seeder
         // projecttable作成==========================================================
         DB::table('project_images')->truncate();
 
-        ImageUp('project_image1.jpg', '『デニムは汚いビジネスだから』', 1, 'project_images');
-        ImageUp('project_image2.jpg', '私たちはデニムの製造基準に関する問題解決にフォーカスしています。', 1, 'project_images');
-        ImageUp('project_image3.jpg', '従来のデニムは汚いビジネスだ。だから私たちはジーンズの製造方法を変えることにした。他の製造者たちが私たちのあとに続き、デニム業界を変える手助けとなることを期待している', 1, 'project_images');
-        ImageUp('project_image4.jpg', '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。', 1, 'project_images');
         ImageUp('project_image5.jpg', 'ヘンプは土壌を回復する効果もあります。', 2, 'project_images');
-        ImageUp('project_image6.jpg', '我々は、厳格な基準が満たされている素晴らしい工場が仲間です。', 2, 'project_images');
-        ImageUp('project_image7.jpg', '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。', 2, 'project_images');
-        ImageUp('project_image8.jpg', '海上がりにヘンプ素材はピッタリです。', 2, 'project_images');
+        ImageUp('project_image1.jpg', '『デニムは汚いビジネスだから』', 1, 'project_images');
         ImageUp('project_image9.jpg', 'ステラ マッカートニーは「廃棄物」を再定義することで、素晴らしい素材の未来を守る支援をしています。', 3, 'project_images');
+        ImageUp('project_image6.jpg', '我々は、厳格な基準が満たされている素晴らしい工場が仲間です。', 2, 'project_images');
+        ImageUp('project_image2.jpg', '私たちはデニムの製造基準に関する問題解決にフォーカスしています。', 1, 'project_images');
         ImageUp('project_image10.jpg', 'ステラ ビスコースのもととなった森は、持続可能に管理され、トレースすることも可能になっています。', 3, 'project_images');
-        ImageUp('project_image11.jpg', '有毒化学物質や難分解性化学物質を使用しないオーガニックコットンを成育することで、節水およびより健全な土壌が確保でき、環境にも農家にも地域コミュニティにも良い影響を与えることができます。', 3, 'project_images');
+        ImageUp('project_image3.jpg', '従来のデニムは汚いビジネスだ。だから私たちはジーンズの製造方法を変えることにした。他の製造者たちが私たちのあとに続き、デニム業界を変える手助けとなることを期待している', 1, 'project_images');
+        ImageUp('project_image7.jpg', '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。', 2, 'project_images');
         ImageUp('project_image12.jpg', '望ましい仕事を供給して人々のスキルを育成し雇用者の声を強め、弱い立場の人々を擁護できるような、現代的で回復力のあるサプライチェーンを構築することが重要です。', 4, 'project_images');
+        ImageUp('project_image4.jpg', '環境に優しいだけではいけない。手にとってもらうための美しさが必要だ。', 1, 'project_images');
+        ImageUp('project_image11.jpg', '有毒化学物質や難分解性化学物質を使用しないオーガニックコットンを成育することで、節水およびより健全な土壌が確保でき、環境にも農家にも地域コミュニティにも良い影響を与えることができます。', 3, 'project_images');
+        ImageUp('project_image8.jpg', '海上がりにヘンプ素材はピッタリです。', 2, 'project_images');
         ImageUp('project_image13.jpg', 'コラボレーターやNGO（非政府組織）と力を合わせステラ マッカートニーの掲げるサステナビリティの目標と循環型社会への想いを実現していきます。', 4, 'project_images');
+
+
+
 
 
         // // projectimagetable作成
