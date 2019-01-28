@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table = 'products';
+    protected $fillable = [
+        'name',
+        'price',
+        'cost',
+        'size',
+        'caption',
+    ];
 
     // こちらが上位
     public function productimages()

@@ -27,31 +27,30 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        // テスト用
-        // $json = json_decode($request->input('image_numbers'));
-
         // トランザクション
-        // $product_id = DB::transaction(function () use ($request, $json) {
         $product_id = DB::transaction(function () use ($request) {
-            // product作成
-            $product_id = \DB::table('products')->insertGetId([
+            // テスト用
+            // $json = json_decode($request->input('image_numbers'));
+            $json = $request->input('image_numbers');
+
+            // プロダクト作成
+            $product = Product::create([
                 'name' => $request->input('product_name'),
                 'price' => $request->input('product_price'),
                 'cost' => $request->input('product_cost'),
                 'size' => $request->input('product_size'),
                 'caption' => $request->input('product_caption'),
             ]);
-
             // projectにプロダクトIDを注入する
             \DB::table('projects')
                 ->where('id', $request->input('project_id'))
                 ->update([
-                    'product_id' => $product_id,
+                    'product_id' => $product->id,
                 ]);
 
-            // テスト用
+            // 画像処理
             for ($count = 0; $count < count($json); $count++) {
-                 // パス取得 及び加工
+                // パス取得
                 $temp_path = TempImage::where('id', $json[$count])
                     ->select('path')
                     ->first();
@@ -63,17 +62,18 @@ class ProductController extends Controller
                 Storage::move($temp_path->path, $trans_path);
                 DB::table('product_images')->insert([
                     'path' => $path,
-                    'product_id' => $product_id
+                    'product_id' => $product->id
                 ]);
 
                 // temptableのデータを消去
                 TempImage::where('id', $json[$count])
                     ->delete();
-            }    // トランザクションの中身を出力
-            return $product_id;
+            }
+            // トランザクションの中身を出力
+            return $product->id;
         });
         // createのレスポンス
         $back = ['product_id' => $product_id];
-        return $back;
+        return response()->json($back);
     }
 }

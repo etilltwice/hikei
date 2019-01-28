@@ -24,32 +24,21 @@ class ProjectController extends Controller
 
     public function create(Request $request)
     {
-        // プロジェクト作成機能
-        // テスト用
-        // $json = json_decode($request->input('project_image'));
-
         // トランザクション
-        // $project_id = DB::transaction(function () use ($request, $json) {
         $project_id = DB::transaction(function () use ($request) {
+            // 代数挿入
+            // $json = json_decode($request->input('project_image'));
+            $json = $request->input('project_image');
+
             // project作成
-            // $project_id = \DB::table('projects')->insertGetId([
-                // 'name' => $request->input('project_name'),
-                // 'caption' => $request->input('project_caption'),
-                // 'brand_id' => $request->input('project_brand_id'),
-                // 'created_at' => ,
-                // 'updated_at' =>
-            // ]);
             $project = Project::create([
                 'name' => $request->input('project_name'),
                 'caption' => $request->input('project_caption'),
                 'brand_id' => $request->input('project_brand_id'),
             ]);
 
-
             // 画像ファイル登録作業
-            // テスト用
-            // foreach ($json as $project_image) {
-            foreach ($request->input('temp_image') as $project_image) {
+            foreach ($json as $project_image) {
                 // パス取得 及び加工
                 $temp_path = TempImage::where('id', $project_image->temp_image_id)
                     ->select('path')
