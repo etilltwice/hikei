@@ -40,7 +40,7 @@ class ProjectController extends Controller
             // 画像ファイル登録作業
             foreach ($json as $project_image) {
                 // パス取得 及び加工
-                $temp_path = TempImage::where('id', $project_image->temp_image_id)
+                $temp_path = TempImage::where('id', $project_image['temp_image_id'])
                     ->select('path')
                     ->first();
                 $path = str_replace('temp/', '', $temp_path->path);
@@ -53,11 +53,11 @@ class ProjectController extends Controller
                 DB::table('project_images')->insert([
                     'path' => $path,
                     'project_id' => $project->id,
-                    'caption' => $project_image->project_image_caption
+                    'caption' => $project_image['project_image_caption']
                 ]);
 
                 // temptableのデータを消去
-                TempImage::where('id', $project_image->temp_image_id)
+                TempImage::where('id', $project_image['temp_image_id'])
                     ->delete();
             }
             // トランザクションの中身を出力
