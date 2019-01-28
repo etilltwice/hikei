@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $table = 'projects';
+    protected $fillable = [
+        'name',
+        'brand_id',
+        'product_id',
+        'caption',
+    ];
 
     //こちらが上位
     public function projectimages()

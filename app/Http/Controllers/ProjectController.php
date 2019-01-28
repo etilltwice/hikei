@@ -26,22 +26,30 @@ class ProjectController extends Controller
     {
         // プロジェクト作成機能
         // テスト用
-        $json = json_decode($request->input('project_image'));
+        // $json = json_decode($request->input('project_image'));
 
         // トランザクション
-        $project_id = DB::transaction(function () use ($request, $json) {
-        // $project_id = DB::transaction(function () use ($request) {
+        // $project_id = DB::transaction(function () use ($request, $json) {
+        $project_id = DB::transaction(function () use ($request) {
             // project作成
-            $project_id = \DB::table('projects')->insertGetId([
+            // $project_id = \DB::table('projects')->insertGetId([
+                // 'name' => $request->input('project_name'),
+                // 'caption' => $request->input('project_caption'),
+                // 'brand_id' => $request->input('project_brand_id'),
+                // 'created_at' => ,
+                // 'updated_at' =>
+            // ]);
+            $project = Project::create([
                 'name' => $request->input('project_name'),
                 'caption' => $request->input('project_caption'),
                 'brand_id' => $request->input('project_brand_id'),
             ]);
 
+
             // 画像ファイル登録作業
             // テスト用
-            foreach ($json as $project_image) {
-            // foreach ($request->input('temp_image') as $project_image) {
+            // foreach ($json as $project_image) {
+            foreach ($request->input('temp_image') as $project_image) {
                 // パス取得 及び加工
                 $temp_path = TempImage::where('id', $project_image->temp_image_id)
                     ->select('path')
@@ -51,9 +59,11 @@ class ProjectController extends Controller
 
                 // 画像データ移動
                 Storage::move($temp_path->path, $trans_path);
+
+                // テーブル挿入
                 DB::table('project_images')->insert([
                     'path' => $path,
-                    'project_id' => $project_id,
+                    'project_id' => $project->id,
                     'caption' => $project_image->project_image_caption
                 ]);
 
@@ -62,7 +72,7 @@ class ProjectController extends Controller
                     ->delete();
             }
             // トランザクションの中身を出力
-            return $project_id;
+            return $project->id;
         });
         // createのレスポンス
         $back = ['project_id' => $project_id];

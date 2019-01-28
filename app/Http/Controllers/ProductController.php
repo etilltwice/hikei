@@ -28,11 +28,11 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         // テスト用
-        $json = json_decode($request->input('image_numbers'));
+        // $json = json_decode($request->input('image_numbers'));
 
         // トランザクション
-        $product_id = DB::transaction(function () use ($request, $json) {
-        // $product_id = DB::transaction(function () use ($request) {
+        // $product_id = DB::transaction(function () use ($request, $json) {
+        $product_id = DB::transaction(function () use ($request) {
             // product作成
             $product_id = \DB::table('products')->insertGetId([
                 'name' => $request->input('product_name'),
